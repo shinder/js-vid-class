@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shinder Lin</title>
+</head>
+<body>
+<div id="info"></div>
+
+<script>
+    const p = new Promise((resolve, reject)=>{
+        setTimeout(function(){
+            reject('hello');
+        }, 300);
+    });
+
+    console.log(1);
+    p.then(result=>{
+        console.log('then:', result);
+        return 3;
+    })
+    .then(a=>{
+        console.log(`a: ${a}`);
+    })
+    .then(b=>{
+        console.log(`b: ${b}`);
+    })
+    .catch(error=>{
+        console.log(`error: ${error}`);
+        return 'from error';
+    })
+    .then(c=>{
+        console.log(`c: ${c}`);
+    })
+    console.log(2);
+
+
+</script>
+</body>
+</html>
