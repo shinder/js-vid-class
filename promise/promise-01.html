@@ -8,25 +8,27 @@
 <div id="info"></div>
 
 <script>
-    const p = new Promise((resolve, reject)=>{
+    new Promise((resolve, reject)=>{
         setTimeout(function(){
-            resolve(123);
-        }, 300);
-    });
+            resolve('Hello');
+            // reject('bad');
+        }, Math.random()*1000);
 
-    console.log(1);
-    p.then(result=>{
-        console.log('then:', result);
-        return 3;
     })
-    .then(a=>{
-        console.log(`a: ${a}`);
-    })
-    .then(b=>{
-        console.log(`b: ${b}`);
-    });
-
-    console.log(2);
+        .then(result=>{
+            info.innerHTML += `${result} <br>`;
+            return 'hi';
+        })
+        .then(a=>{
+            // throw new Error('abc');
+            info.innerHTML += `a: ${a} <br>`;
+        })
+        .catch(ex=>{
+            info.innerHTML += `ex: ${ex.toString()} <br>`;
+        })
+        .then(b=>{
+            info.innerHTML += `b: ${b} <br>`;
+        })
 
 
 </script>
