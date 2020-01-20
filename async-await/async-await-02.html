@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shinder Lin</title>
+</head>
+<body>
+<div id="info"></div>
+
+<script>
+    const myFunc = (msec)=>{
+        return new Promise((resolve, reject)=>{
+            setTimeout(function(){
+                resolve([msec, Math.floor(Math.random()*100)]);
+            }, msec);
+        });
+    };
+
+    async function doSomething(){
+        const ar = [];
+        ar.push( await myFunc(500));
+        ar.push( await myFunc(600));
+        ar.push( await myFunc(700));
+        return ar;
+    }
+
+    //let myAr = doSomething(); // 錯誤的寫法
+    doSomething().then(ar=>{
+        info.innerHTML += JSON.stringify(ar) + '<br>';
+    });
+</script>
+</body>
+</html>
